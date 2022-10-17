@@ -1,13 +1,15 @@
-Package: packagetemplate
-Title: Package Template
-Version: 0.0.0.9000
+Package: packageTemplateHC
+Title: BugSigDB Data Filtering
+Version: 1.0.0
 Authors@R: 
-    person(given = "J",
-           family = "Wokaty",
+    person(given = "Halimat Chisom",
+           family = "Atanda",
            role = c("aut", "cre"),
-           email = "jwokaty@users.noreply.github.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: A template for creating R packages.
+           email = "gearthdexter@gmail.com",
+           comment = c(ORCID = "0000-0003-4785-468X"))
+Description: A package that uses bugsigdbr to get specific datasets related to a selected country and condition
+Dependency: BiocManager::bugsigdbr
+VignetteBuilder:: knitr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
