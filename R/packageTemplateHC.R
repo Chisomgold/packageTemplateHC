@@ -1,10 +1,10 @@
 # function to print a dataframe with specified country and condition
 
-packageTemplateHC <- function(a,b) {
+packageTemplateHC <- function(location, condition) {
 	library(bugsigdbr)
 	biodata <- importBugSigDB()
-	df <- subset(biodata, `Location of subjects` == a &
-               Condition == b)
+	df <- subset(biodata, `Location of subjects` == location &
+               Condition == condition)
   
 	  print(df)
 }
