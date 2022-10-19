@@ -1,0 +1,92 @@
+---
+title: "Package Name: packageTemplateHC"
+author: "Halimat Chisom Atanda"
+date: "2022-10-17"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{packageTemplateHC}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Package Description
+
+This package was created from the `bugsigdbr` package in Bioconductor.
+It imports data from BugSigDB and filters it based on location and
+condition.
+
+Here's a simple breakdown of how the `packageTemplateHC` works:
+
+-   loads the library of `bugsigdbr`
+
+-   imports all the data from [BugSigBD](bugsigdb.org)
+
+-   Filters extracted data based on location study and condition type
+
+-   Returns a filtered dataframe
+
+## Using `packageTemplateHC`
+
+To use this package, you must:
+
+-   be interested in a particular study location and condition, and
+
+-   have `bugsigdbr` package installed
+
+There are over 60 different locations and over 180 conditions in the
+dataset for which you can use to filter.
+
+The package accepts two arguments, a and b. a takes location of subjects
+and b takes condition, both as strings.
+
+E.g. a could be "United States of America", "Denmark," "Italy," etc.
+
+b could be "adenoma," "obesity," "high fat diet," "gestational
+diabetes," etc.
+
+The output of this package is a simple filtered dataframe containing all
+entries of the location and condition of choice.
+
+## Code Description
+
+The first line of code defines the function. The next loads the
+`bugsigdbr` package. Then, data is imported into a dataframe,
+"`biodata`" The next lines defines each argument in the function, and
+final command prints the filteres dataframe.
+
+```{r}
+# function to print a dataframe with specified country and condition
+
+packageTemplateHC <- function(a,b) {
+	library(bugsigdbr)
+	biodata <- importBugSigDB()
+	df <- subset(biodata, `Location of subjects` == a &
+               Condition == b)
+  
+	  print(df)
+}
+```
+
+## Example
+
+```{r echo=TRUE}
+filteredUSAadenoma <- packageTemplateHC("United States of America", "adenoma")
+
+dim(filteredUSAadenoma)
+```
+
+```{r echo=TRUE}
+filteredDenmarkAdenoma <- packageTemplateHC("Denmark", "adenoma")
+
+dim(filteredDenmarkAdenoma)
+```
